@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search-item tests renders correct if trackName is is undefined 1`] = `<View />`;
+
+exports[`search-item tests renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Enter Sandman
+  </Text>
+  <Text>
+    Metallica
+  </Text>
+</View>
+`;

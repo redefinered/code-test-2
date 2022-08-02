@@ -25,13 +25,6 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const renderItem = ({item}) => {
-    // eslint-disable-next-line curly
-    if (!item.trackName) return;
-
-    return <SearchItem item={item} />;
-  };
-
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -40,7 +33,7 @@ const App = () => {
         <FlatList
           data={results}
           keyExtractor={item => item.trackId}
-          renderItem={renderItem}
+          renderItem={({item}) => <SearchItem item={item} />}
         />
       </View>
     </SafeAreaView>
