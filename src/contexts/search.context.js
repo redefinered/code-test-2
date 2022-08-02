@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {debounce} from 'lodash';
 import React, {createContext, useEffect, useState} from 'react';
 
 export const SearchResultContext = createContext({
@@ -11,21 +12,21 @@ export const SearchResultContext = createContext({
 });
 
 const SearchResultProvider = ({children}) => {
-  const [term, setTerm] = useState([]);
+  const [term, setTerm] = useState('metallica');
   const [results, setResults] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    const getResults = async term => {
+    const getResults = debounce(async () => {
       setIsFetching(true);
       const resp = await axios.get(
         `https://itunes.apple.com/search?term=${term}`,
       );
       setResults(resp?.data.results);
       setIsFetching(false);
-    };
+    }, 500);
     getResults();
-  }, []);
+  }, [term]);
 
   return (
     <SearchResultContext.Provider

@@ -7,24 +7,15 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import SearchResultProvider, {SearchResultContext} from './src/search.context';
-
-const SearchBar = () => {
-  const [searchString, setSearchString] = useState('');
-  const handleChangeText = text => setSearchString(text);
-  return (
-    <TextInput
-      style={styles.searchBar}
-      value={searchString}
-      handleChangeText={handleChangeText}
-    />
-  );
-};
+import SearchBar from './src/components/search-bar';
+import SearchItem from './src/components/search-item';
+import SearchResultProvider, {
+  SearchResultContext,
+} from './src/contexts/search.context';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -38,12 +29,7 @@ const App = () => {
     // eslint-disable-next-line curly
     if (!item.trackName) return;
 
-    return (
-      <View style={{marginBottom: 10}}>
-        <Text style={{fontWeight: 'bold'}}>{item.trackName}</Text>
-        <Text>{item.artistName}</Text>
-      </View>
-    );
+    return <SearchItem item={item} />;
   };
 
   return (
@@ -72,10 +58,6 @@ const AppContainer = () => {
 const styles = StyleSheet.create({
   root: {
     paddingHorizontal: 15,
-  },
-  searchBar: {
-    padding: 5,
-    borderWidth: 1,
   },
 });
 
