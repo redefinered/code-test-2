@@ -6,9 +6,7 @@ import styles from './styles';
 
 const TrackDetailScreen = () => {
   const {selectedTrack} = useContext(TrackDetailContext);
-  useEffect(() => {
-    console.log({selectedTrack});
-  }, [selectedTrack]);
+  useEffect(() => {}, [selectedTrack]);
   return (
     <View style={styles.root}>
       <Image

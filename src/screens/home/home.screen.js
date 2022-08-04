@@ -7,7 +7,6 @@ import {
   StatusBar,
   View,
   SectionList,
-  StyleSheet,
   useColorScheme,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,9 +19,10 @@ import {
   SEARCH_RESULT_PERSIST_KEY,
 } from '../../config/search-result.config';
 import {SearchResultContext} from '../../contexts/search.context';
-import {ALBUM, RELEASE_DATE} from '../../contexts/config';
+import {ALBUM} from '../../contexts/config';
 import moment from 'moment';
 import {uniq} from 'lodash';
+import styles from './styles';
 
 const HomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -79,7 +79,6 @@ const HomeScreen = ({navigation}) => {
     });
 
     collectionNames = uniq(collectionNames);
-    console.log({collectionNames});
 
     return collectionNames.map(title => ({
       title: isAlbumMode ? title : moment(title).format('MMM d, YYYY'),
@@ -89,12 +88,18 @@ const HomeScreen = ({navigation}) => {
     }));
   }, [results, mode]);
 
+  const viewModeNode = useMemo(() => {
+    if (!sectionListData.length) return;
+
+    return <ModeSelect />;
+  }, [sectionListData]);
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={styles.root}>
         <SearchBar />
-        <ModeSelect />
+        {viewModeNode}
         <SectionList
           stickySectionHeadersEnabled={false}
           sections={sectionListData}
@@ -112,18 +117,5 @@ const HomeScreen = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  album: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 10,
-    marginBottom: 10,
-  },
-});
 
 export default HomeScreen;
