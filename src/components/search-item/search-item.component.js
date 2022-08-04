@@ -1,11 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import {useNavigation} from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {TrackDetailContext} from '../../contexts/track-detail.context';
 
-const SearchItem = ({item}) => {
-  const navigation = useNavigation();
+/**
+ * The useNavigation hook can be used here but jest does not work well with it
+ * so, navigation object is passed thru props instead
+ */
+const SearchItem = ({item, navigation}) => {
   const {setSelectedTrack} = useContext(TrackDetailContext);
   if (!item?.trackName) {
     return <View />;

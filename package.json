@@ -31,9 +31,6 @@
     "react-test-renderer": "^18.2.0"
   },
   "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|react-navigation|@react-navigation/.*))"
-    ]
+    "preset": "react-native"
   }
 }

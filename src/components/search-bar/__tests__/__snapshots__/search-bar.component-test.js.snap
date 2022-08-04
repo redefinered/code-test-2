@@ -2,11 +2,16 @@
 
 exports[`search-bar tests renders correctly 1`] = `
 <TextInput
+  autoFocus={true}
+  clearButtonMode="always"
   onChangeText={[Function]}
+  returnKeyType="search"
   style={
     Object {
+      "borderRadius": 10,
       "borderWidth": 1,
-      "padding": 5,
+      "marginBottom": 10,
+      "padding": 10,
     }
   }
   value={Array []}

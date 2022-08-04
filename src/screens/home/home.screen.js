@@ -15,7 +15,7 @@ import SearchBar from '../../components/search-bar';
 import SearchItem from '../../components/search-item';
 import {SearchResultContext} from '../../contexts/search.context';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const {results} = useContext(SearchResultContext);
 
@@ -57,7 +57,9 @@ const HomeScreen = () => {
           stickySectionHeadersEnabled={false}
           sections={sectionListData}
           keyExtractor={(item, index) => item + index}
-          renderItem={({item}) => <SearchItem item={item} />}
+          renderItem={({item}) => (
+            <SearchItem item={item} navigation={navigation} />
+          )}
           renderSectionHeader={({section: {title}}) => (
             <View style={backgroundStyle}>
               <Text style={styles.album}>{title}</Text>

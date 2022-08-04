@@ -4,23 +4,25 @@ exports[`search-item tests renders correct if trackName is is undefined 1`] = `<
 
 exports[`search-item tests renders correctly 1`] = `
 <View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginBottom": 10,
+      "opacity": 1,
+      "padding": 10,
     }
   }
 >
-  <Text
-    style={
-      Object {
-        "fontWeight": "bold",
-      }
-    }
-  >
-    Enter Sandman
-  </Text>
   <Text>
-    Metallica
+    Enter Sandman
   </Text>
 </View>
 `;
