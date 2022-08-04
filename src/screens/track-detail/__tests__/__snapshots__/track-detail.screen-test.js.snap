@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search-bar tests renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "padding": 15,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "height": 100,
+        "uri": undefined,
+        "width": 100,
+      }
+    }
+    style={
+      Object {
+        "marginBottom": 10,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "marginBottom": 5,
+      }
+    }
+  />
+  <Text>
+    By undefined
+  </Text>
+  <Text>
+    Album: undefined
+  </Text>
+  <Text>
+    Release date: Aug 4, 2022
+  </Text>
+</View>
+`;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search-bar tests renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <RCTSwitch
+      accessibilityRole="switch"
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "height": 31,
+            "width": 51,
+          },
+          Object {
+            "backgroundColor": "#3e3e3e",
+            "borderRadius": 16,
+          },
+        ]
+      }
+      value={false}
+    />
+    <Text
+      style={
+        Object {
+          "marginLeft": 10,
+        }
+      }
+    >
+      View by release date
+    </Text>
+  </View>
+</View>
+`;

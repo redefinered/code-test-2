@@ -12,6 +12,7 @@ exports[`Home screen tests renders correctly 1`] = `
   <View
     style={
       Object {
+        "paddingBottom": 150,
         "paddingHorizontal": 15,
         "paddingVertical": 10,
       }
