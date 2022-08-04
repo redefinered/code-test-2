@@ -12,7 +12,7 @@ export const SearchResultContext = createContext({
 });
 
 const SearchResultProvider = ({children}) => {
-  const [term, setTerm] = useState('metallica');
+  const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -30,7 +30,14 @@ const SearchResultProvider = ({children}) => {
 
   return (
     <SearchResultContext.Provider
-      value={{term, setTerm, results, setResults, isFetching, setIsFetching}}>
+      value={{
+        term,
+        setTerm,
+        results,
+        setResults,
+        isFetching,
+        setIsFetching,
+      }}>
       {children}
     </SearchResultContext.Provider>
   );

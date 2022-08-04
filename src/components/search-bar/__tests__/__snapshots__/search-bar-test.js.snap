@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search-bar tests renders correctly 1`] = `
+<TextInput
+  onChangeText={[Function]}
+  style={
+    Object {
+      "borderWidth": 1,
+      "padding": 5,
+    }
+  }
+  value={Array []}
+/>
+`;

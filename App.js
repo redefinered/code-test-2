@@ -1,12 +1,9 @@
-/* eslint-disable react-native/no-inline-styles */
-
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {
   FlatList,
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
@@ -40,18 +37,16 @@ const App = () => {
   );
 };
 
-const AppContainer = () => {
-  return (
-    <SearchResultProvider>
-      <App />
-    </SearchResultProvider>
-  );
-};
-
 const styles = StyleSheet.create({
   root: {
     paddingHorizontal: 15,
   },
 });
+
+const AppContainer = () => (
+  <SearchResultProvider>
+    <App />
+  </SearchResultProvider>
+);
 
 export default AppContainer;

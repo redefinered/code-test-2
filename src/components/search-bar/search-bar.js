@@ -1,15 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {TextInput} from 'react-native';
+import {SearchResultContext} from '../../contexts/search.context';
 import styles from './styles';
 
 const SearchBar = () => {
-  const [searchString, setSearchString] = useState('');
-  const handleChangeText = text => setSearchString(text);
+  const {term, setTerm} = useContext(SearchResultContext);
+  const handleChangeText = text => setTerm(text);
+
   return (
     <TextInput
       style={styles.searchBar}
-      value={searchString}
-      handleChangeText={handleChangeText}
+      value={term}
+      onChangeText={handleChangeText}
     />
   );
 };
