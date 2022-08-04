@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {debounce} from 'lodash';
 import React, {createContext, useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {SEARCH_RESULT_PERSIST_KEY} from '../config/search-result.config';
 
 export const SearchResultContext = createContext({
   term: [],
@@ -22,7 +24,19 @@ const SearchResultProvider = ({children}) => {
       const resp = await axios.get(
         `https://itunes.apple.com/search?term=${term}`,
       );
-      setResults(resp?.data.results);
+      const searchResult = resp?.data.results;
+
+      // prevents persisted data from being reset when exiting app
+      // eslint-disable-next-line curly
+      if (!resp?.data.results.length) return;
+
+      // persist search result
+      await AsyncStorage.setItem(
+        SEARCH_RESULT_PERSIST_KEY,
+        JSON.stringify(resp?.data),
+      );
+
+      setResults(searchResult);
       setIsFetching(false);
     }, 500);
     getResults();

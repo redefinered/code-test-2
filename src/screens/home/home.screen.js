@@ -1,6 +1,7 @@
 /* eslint-disable curly */
 
-import React, {useContext, useMemo} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useContext, useEffect, useMemo} from 'react';
 import {
   Text,
   SafeAreaView,
@@ -13,17 +14,29 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import SearchBar from '../../components/search-bar';
 import SearchItem from '../../components/search-item';
+import {SEARCH_RESULT_PERSIST_KEY} from '../../config/search-result.config';
 import {SearchResultContext} from '../../contexts/search.context';
 
 const HomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const {results} = useContext(SearchResultContext);
+  const {results, setResults} = useContext(SearchResultContext);
 
   const backgroundStyle = useMemo(() => {
     return {
       backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
   }, [isDarkMode]);
+
+  useEffect(() => {
+    const readPersistedResult = async () => {
+      const data = await AsyncStorage.getItem(SEARCH_RESULT_PERSIST_KEY);
+      const dataParse = JSON.parse(data);
+      console.log({dataParse});
+      setResults(dataParse.results);
+    };
+
+    readPersistedResult();
+  }, [setResults]);
 
   const sectionListData = useMemo(() => {
     if (!results.length) {
