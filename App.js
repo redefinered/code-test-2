@@ -13,6 +13,7 @@ import SearchItem from './src/components/search-item';
 import SearchResultProvider, {
   SearchResultContext,
 } from './src/contexts/search.context';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -44,9 +45,11 @@ const styles = StyleSheet.create({
 });
 
 const AppContainer = () => (
-  <SearchResultProvider>
-    <App />
-  </SearchResultProvider>
+  <NavigationContainer>
+    <SearchResultProvider>
+      <App />
+    </SearchResultProvider>
+  </NavigationContainer>
 );
 
 export default AppContainer;
