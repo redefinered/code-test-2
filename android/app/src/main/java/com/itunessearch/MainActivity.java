@@ -4,6 +4,12 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
+/**
+ * Required configuration for React Navigation
+ * Reference: https://reactnavigation.org/docs/getting-started/#installing-dependencies-into-a-bare-react-native-project
+ */
+import android.os.Bundle;
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -23,6 +29,15 @@ public class MainActivity extends ReactActivity {
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
     return new MainActivityDelegate(this, getMainComponentName());
+  }
+
+  /**
+   * Required configuration for React Navigation
+   * Reference: https://reactnavigation.org/docs/getting-started/#installing-dependencies-into-a-bare-react-native-project
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 
   public static class MainActivityDelegate extends ReactActivityDelegate {
