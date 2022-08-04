@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchBar from '../search-bar';
+import HomeScreen from '../home.screen';
 
 import renderer from 'react-test-renderer';
 
-describe('search-bar tests', () => {
+describe('Home screen tests', () => {
   test('renders correctly', () => {
-    const tree = renderer.create(<SearchBar />).toJSON();
+    const tree = renderer.create(<HomeScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

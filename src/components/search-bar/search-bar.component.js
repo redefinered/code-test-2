@@ -9,6 +9,9 @@ const SearchBar = () => {
 
   return (
     <TextInput
+      autoFocus
+      returnKeyType="search"
+      clearButtonMode="always"
       style={styles.searchBar}
       value={term}
       onChangeText={handleChangeText}

@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchItem from '../search-item';
+import SearchItem from '../search-item.component';
 
 import renderer from 'react-test-renderer';
 
