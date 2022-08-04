@@ -16,6 +16,7 @@ const TrackDetailScreen = () => {
         style={styles.image}
       />
       <Text style={styles.track}>{selectedTrack?.trackName}</Text>
+      <Text>{`By ${selectedTrack?.artistName}`}</Text>
       <Text>{`Album: ${selectedTrack?.collectionName}`}</Text>
       <Text>{`Release date: ${moment(selectedTrack?.releaseDate).format(
         'MMM d, YYYY',

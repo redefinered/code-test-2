@@ -1,10 +1,16 @@
+import React, {createContext, useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
 import {debounce} from 'lodash';
-import React, {createContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {SEARCH_RESULT_PERSIST_KEY} from '../config/search-result.config';
+import {
+  MODE_SELECTION_KEY,
+  SEARCH_RESULT_PERSIST_KEY,
+} from '../config/search-result.config';
+import {ALBUM} from './config';
 
 export const SearchResultContext = createContext({
+  mode: ALBUM,
+  setMode: () => {},
   term: [],
   setTerm: () => {},
   results: [],
@@ -15,6 +21,7 @@ export const SearchResultContext = createContext({
 
 const SearchResultProvider = ({children}) => {
   const [term, setTerm] = useState('');
+  const [mode, setMode] = useState(ALBUM);
   const [results, setResults] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -42,9 +49,19 @@ const SearchResultProvider = ({children}) => {
     getResults();
   }, [term]);
 
+  const handleModeSelect = useCallback(async modevalue => {
+    // eslint-disable-next-line curly
+    if (!modevalue) return;
+
+    await AsyncStorage.setItem(MODE_SELECTION_KEY, modevalue);
+    setMode(modevalue);
+  }, []);
+
   return (
     <SearchResultContext.Provider
       value={{
+        mode,
+        handleModeSelect,
         term,
         setTerm,
         results,
