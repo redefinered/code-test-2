@@ -38,7 +38,7 @@ describe('search-item tests', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test('renders correct if trackName is is undefined', () => {
+  test('renders correct if trackName is undefined', () => {
     const tree = renderer
       .create(<SearchItem item={ITEM_WITH_UNDEFINED_TRACK_NAME} />)
       .toJSON();
