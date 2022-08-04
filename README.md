@@ -1,5 +1,7 @@
 # Code Test 1
 
+## Installation
+
 ### Clone repo
 
 1. copy repo url and run `git clone <repo url here>`
